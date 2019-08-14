@@ -1,0 +1,9 @@
+Parâmetros
+
+CPF 			- 	limpo	 	| sujo
+idade 			- 	primeira 	| segunda 	| terceira 	| quarta 
+estado civil 	- 	solteiro 	| casado 	| viuvo 	| ue
+UF	 			- 	norte 		| sul 		| leste 	| oeste
+renda 			-	baixa  		| media1	| media2 	| alta
+
+risco			-	baixo		| medio1	| medio2	| medio3	| alto
