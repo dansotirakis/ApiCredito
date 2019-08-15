@@ -1,0 +1,67 @@
+[System]
+Name='FuzzyCredit'
+Type='mamdani'
+Version=2.0
+NumInputs=5
+NumOutputs=1
+NumRules=1
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='CPF'
+Range=[0 1]
+NumMFs=2
+MF1='SUJO':'gauss2mf',[0.1 0 0.5 0]
+MF2='LIMPO':'gauss2mf',[0.5 1 1 1]
+
+[Input2]
+Name='IDADE'
+Range=[0 1]
+NumMFs=3
+MF1='PRIMEIRA':'trimf',[-0.5 0 0.5]
+MF2='SEGUNDA':'trimf',[0 0.5 1]
+MF3='TERCEIRA':'trimf',[0.5 1 1.5]
+
+[Input3]
+Name='ESTADOCIVIL'
+Range=[0 1]
+NumMFs=4
+MF1='SOLTEIRO':'trimf',[-0.3333 0 0.3333]
+MF2='CASADO':'trimf',[0 0.3333 0.6667]
+MF3='VIUVO':'trimf',[0.3333 0.6667 1]
+MF4='UE':'trimf',[0.6667 1 1.333]
+
+[Input4]
+Name='UF'
+Range=[0 1]
+NumMFs=4
+MF1='NORTE':'trimf',[-0.3333 0 0.3333]
+MF2='SUL':'trimf',[0 0.3333 0.6667]
+MF3='LESTE':'trimf',[0.3333 0.6667 1]
+MF4='OESTE':'trimf',[0.6667 1 1.333]
+
+[Input5]
+Name='RENDA'
+Range=[0 1]
+NumMFs=4
+MF1='BAIXA':'gauss2mf',[0.1132 -0.03333 0.1132 0.03333]
+MF2='MD1':'gauss2mf',[0.1132 0.3 0.1132 0.3667]
+MF3='MD2':'gauss2mf',[0.1132 0.6333 0.1132 0.7]
+MF4='ALTA':'gauss2mf',[0.1132 0.9667 0.1132 1.033]
+
+[Output1]
+Name='RISCO'
+Range=[0 1]
+NumMFs=5
+MF1='BAIXO':'trapmf',[-0 0 0.1 0.2]
+MF2='MD1':'trapmf',[0.1 0.2 0.3 0.4]
+MF3='MD2':'trapmf',[0.3 0.4 0.5 0.6]
+MF4='MD3':'trapmf',[0.5 0.6 0.7 0.8]
+MF5='ALTO':'trapmf',[0.7 0.8 1 1]
+
+[Rules]
+1 1 1 1 1, 1 (1) : 1
