@@ -1,0 +1,290 @@
+---
+swagger: "2.0"
+info:
+  description: Sistema de avaliação de risco para conseção de crédito.
+  version: 1.0.0
+  title: ApiCredit
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: dev@company.com
+host: localhost:8180
+basePath: /
+tags:
+- name: cliente
+  description: Clientes para análise de crédito
+- name: perfil
+  description: Perfil de risco
+- name: proposta
+  description: Propostas de crédito
+schemes:
+- https
+- http
+paths:
+  /cliente/add:
+    post:
+      tags:
+      - cliente
+      summary: Cadastrar cliente
+      description: Recurso para cadastro de cliente
+      operationId: createCliente
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Criação do cliente
+        required: true
+        schema:
+          $ref: '#/definitions/cliente'
+      responses:
+        default:
+          description: successful operation
+  /cliente/edit:
+    put:
+      tags:
+      - cliente
+      summary: Updated client
+      description: Recurso para edição de clientes.
+      operationId: updateCliente
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Atualiza cliente
+        required: true
+        schema:
+          $ref: '#/definitions/cliente'
+      responses:
+        400:
+          description: Invalid cliente supplied
+        500:
+          description: Cliente not found
+  /cliente/{id}:
+    get:
+      tags:
+      - cliente
+      summary: Consulta cliente por id
+      description: Recurso para consulta de clientes
+      operationId: getClienteById
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: id do cliente digite id 1 por exemplo
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/cliente'
+        500:
+          description: Cliente not found
+  /perfil/add:
+    post:
+      tags:
+      - perfil
+      summary: Cadastrar perfil
+      description: Recurso para cadastro de perfil
+      operationId: createPerfil
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Criação do perfil
+        required: true
+        schema:
+          $ref: '#/definitions/perfil'
+      responses:
+        default:
+          description: successful operation
+  /perfil/edit:
+    put:
+      tags:
+      - perfil
+      summary: Updated perfil
+      description: Recurso para edição do perfil.
+      operationId: updatePerfil
+      produces:
+      - application/xml
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Atualiza perfil
+        required: true
+        schema:
+          $ref: '#/definitions/perfil'
+      responses:
+        400:
+          description: Invalid perfil supplied
+        500:
+          description: Perfil not found
+  /perfil/{id}:
+    get:
+      tags:
+      - perfil
+      summary: Consulta perfil por id
+      description: Recurso para consulta de perfils
+      operationId: getPerfilById
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: id do perfil digite id 1 por exemplo
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/perfil'
+        500:
+          description: Cliente not found
+  /perfil/cliente/{idCliente}:
+    get:
+      tags:
+      - perfil
+      summary: Consulta perfil por id do cliente
+      description: Recurso para consulta de perfils por cliente
+      operationId: getPerfilByIdCliente
+      produces:
+      - application/json
+      parameters:
+      - name: idCliente
+        in: path
+        description: id do perfil digite id 1 por exemplo
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/perfil'
+        500:
+          description: Perfil not found
+  /proposta/{id}:
+    get:
+      tags:
+      - proposta
+      summary: Consulta proposta por id
+      description: Recurso para consulta de propostas
+      operationId: getPropostaById
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: id do proposta digite id 1 por exemplo
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/proposta'
+        500:
+          description: Proposta not found
+  /proposta/cliente/{idCliente}:
+    get:
+      tags:
+      - proposta
+      summary: Consulta proposta por id do cliente
+      description: Recurso para consulta de propostas por cliente
+      operationId: getPropostaByIdCliente
+      produces:
+      - application/json
+      parameters:
+      - name: idCliente
+        in: path
+        description: id do proposta digite id 1 por exemplo
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/proposta'
+        500:
+          description: Proposta not found
+definitions:
+  cliente:
+    type: object
+    required:
+    - cpf
+    - dependentes
+    - idade
+    - renda
+    - sexo
+    - uf
+    properties:
+      id:
+        type: integer
+        format: int64
+      nome:
+        type: string
+      dependentes:
+        type: integer
+      cpf:
+        type: integer
+        format: int64
+      sexo:
+        type: string
+      estadocivil:
+        type: integer
+      idade:
+        type: integer
+      uf:
+        type: string
+      renda:
+        type: number
+      perfil:
+        $ref: '#/definitions/perfil'
+    xml:
+      name: Client
+  perfil:
+    type: object
+    properties:
+      risco:
+        type: integer
+      alcadaMinima:
+        type: number
+      alcadaMaxima:
+        type: number
+    xml:
+      name: Perfil
+  proposta:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      PropostaSituacao:
+        type: string
+        enum:
+        - RECUSADO
+        - APROVADO
+      SituacaoMotivo:
+        type: string
+        enum:
+        - APROVADO1
+        - APROVADO2
+        - RECUSADO1
+        - RECUSADO2
+        - RECUSADO3
+      client:
+        $ref: '#/definitions/cliente'
+    xml:
+      name: Proposta
+externalDocs:
+  description: Saiba mais informações sobre ApiCredit
+  url: https://github.com/dansotirakis/API-CREDITO-SPRINGBOOT-WEB-UI-ANGULAR-8/tree/master/api-credit
