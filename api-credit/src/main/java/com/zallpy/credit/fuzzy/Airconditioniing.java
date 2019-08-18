@@ -17,7 +17,7 @@ public class Airconditioniing {
         double p =in.nextDouble();
         System.out.println("renda (0-10):");
         double t =in.nextDouble();
-        System.out.println("dependentes (1-10):");
+        System.out.println("dependentes (0-10):");
         double s =in.nextDouble();
         
         
