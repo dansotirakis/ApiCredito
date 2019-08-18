@@ -1,15 +1,13 @@
 package com.zallpy.credit.model;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente implements Serializable {
@@ -24,17 +22,16 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	private Integer dependerntes; 
 	private Long cpf;
 	private char sexo;
-	private String estadocivil;
+	private Integer estadocivil;
 	private String uf;
 	private double renda;
-	@ManyToMany
-	@JoinTable(name = "cliente_has_perfil", 
-		joinColumns = { @JoinColumn(name = "cliente_id") }, 
-		inverseJoinColumns = {@JoinColumn(name = "perfil_id") }
-	)
-	private List<Perfil> perfis;
+	private Integer idade;
+	
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Perfil perfil;
 
 	// Gettings and Settings
 	public Integer getId() {
@@ -65,11 +62,11 @@ public class Cliente implements Serializable {
 		return serialVersionUID;
 	}
 
-	public String getEstadocivil() {
+	public Integer getEstadocivil() {
 		return estadocivil;
 	}
 
-	public void setEstadocivil(String estadocivil) {
+	public void setEstadocivil(Integer estadocivil) {
 		this.estadocivil = estadocivil;
 	}
 
@@ -97,4 +94,26 @@ public class Cliente implements Serializable {
 		this.renda = renda;
 	}
 
+	public Integer getDependerntes() {
+		return dependerntes;
+	}
+
+	public void setDependerntes(Integer dependerntes) {
+		this.dependerntes = dependerntes;
+	}
+
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
 }

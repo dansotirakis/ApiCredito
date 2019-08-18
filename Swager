@@ -1,0 +1,613 @@
+swagger: "2.0"
+
+info:
+  description: "Sistema de avaliação de risco para conseção de crédito."
+  version: "1.0.0"
+  title: "ApiCredit"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "dev@company.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "propostaperfil.swagger.io"
+basePath: "/v2"
+
+tags:
+- name: "proposta"
+  description: ""
+ 
+- name: "perfil"
+  description: ""
+
+- name: "client"
+  description: ""
+  
+schemes:
+- "https"
+- "http"
+
+paths:
+  /proposta:
+
+    post:
+      tags:
+      - "proposta"
+      summary: "Add a new proposta to the perfil"
+      description: ""
+      operationId: "addProposta"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Proposta object that needs to be added to the perfil"
+        required: true
+        schema:
+          $ref: "#/definitions/Proposta"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - propostaperfil_auth:
+        - "write:propostas"
+        - "read:propostas"
+    put:
+      tags:
+      - "proposta"
+      summary: "Update an existing proposta"
+      description: ""
+      operationId: "updateProposta"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Proposta object that needs to be added to the perfil"
+        required: true
+        schema:
+          $ref: "#/definitions/Proposta"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Proposta not found"
+        405:
+          description: "Validation exception"
+      security:
+      - propostaperfil_auth:
+        - "write:propostas"
+        - "read:propostas"
+
+  /proposta/findByStatus:
+
+    get:
+      tags:
+      - "proposta"
+      summary: "Finds Propostas by status"
+      description: "Multiple status values can be provided with comma separated strings"
+      operationId: "findPropostasByStatus"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "status"
+        in: "query"
+        description: "Status values that need to be considered for filter"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "available"
+          - "pending"
+          - "sold"
+          default: "available"
+        collectionFormat: "multi"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Proposta"
+        400:
+          description: "Invalid status value"
+      security:
+      - propostaperfil_auth:
+        - "write:propostas"
+        - "read:propostas"
+
+  /proposta/{propostaId}:
+
+    get:
+      tags:
+      - "proposta"
+      summary: "Find proposta by ID"
+      description: "Returns a single proposta"
+      operationId: "getPropostaById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "propostaId"
+        in: "path"
+        description: "ID of proposta to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Proposta"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Proposta not found"
+      security:
+      - api_key: []
+    post:
+      tags:
+      - "proposta"
+      summary: "Updates a proposta in the perfil with form data"
+      description: ""
+      operationId: "updatePropostaWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "propostaId"
+        in: "path"
+        description: "ID of proposta that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the proposta"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the proposta"
+        required: false
+        type: "string"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - propostaperfil_auth:
+        - "write:propostas"
+        - "read:propostas"
+    delete:
+      tags:
+      - "proposta"
+      summary: "Deletes a proposta"
+      description: ""
+      operationId: "deleteProposta"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "propostaId"
+        in: "path"
+        description: "Proposta id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Proposta not found"
+      security:
+      - propostaperfil_auth:
+        - "write:propostas"
+        - "read:propostas"
+
+  /perfil/inventory:
+  
+    get:
+      tags:
+      - "perfil"
+      summary: "Returns proposta inventories by status"
+      description: "Returns a map of status codes to quantities"
+      operationId: "getInventory"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "integer"
+              format: "int32"
+      security:
+      - api_key: []
+  
+  /perfil/cliente:
+  
+    post:
+      tags:
+      - "perfil"
+      summary: "Place an cliente for a proposta"
+      description: ""
+      operationId: "placePerfil"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "cliente placed for purchasing the proposta"
+        required: true
+        schema:
+          $ref: "#/definitions/Perfil"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Perfil"
+        400:
+          description: "Invalid Perfil"
+  
+  /perfil/cliente/{clienteId}:
+  
+    get:
+      tags:
+      - "perfil"
+      summary: "Find purchase cliente by ID"
+      description: "For valid response try integer IDs with value >= 1 and <= 10.         Other values will generated exceptions"
+      operationId: "getPerfilById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "clienteId"
+        in: "path"
+        description: "ID of proposta that needs to be fetched"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Perfil"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Perfil not found"
+    delete:
+      tags:
+      - "perfil"
+      summary: "Delete purchase cliente by ID"
+      description: "For valid response try integer IDs with positive integer value.         Negative or non-integer values will generate API errors"
+      operationId: "deletePerfil"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "clienteId"
+        in: "path"
+        description: "ID of the cliente that needs to be deleted"
+        required: true
+        type: "integer"
+        minimum: 1.0
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Perfil not found"
+  
+  /client:
+  
+    post:
+      tags:
+      - "proposta"
+      summary: "Create client"
+      description: "This can only be done by the logged in client."
+      operationId: "createClient"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created client object"
+        required: true
+        schema:
+          $ref: "#/definitions/Client"
+      responses:
+        default:
+          description: "successful operation"
+  
+  /client/createWithArray:
+  
+    post:
+      tags:
+      - "client"
+      summary: "Creates list of clients with given input array"
+      description: ""
+      operationId: "createClientsWithArrayInput"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of client object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Client"
+      responses:
+        default:
+          description: "successful operation"
+  
+  /client/createWithList:
+  
+    post:
+      tags:
+      - "client"
+      summary: "Creates list of clients with given input array"
+      description: ""
+      operationId: "createClientsWithListInput"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of client object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Client"
+      responses:
+        default:
+          description: "successful operation"
+  
+  /client/login:
+  
+    get:
+      tags:
+      - "client"
+      summary: "Logs client into the system"
+      description: ""
+      operationId: "loginClient"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "clientname"
+        in: "query"
+        description: "The client name for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the client"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+        400:
+          description: "Invalid clientname/password supplied"
+  
+  /client/logout:
+  
+    get:
+      tags:
+      - "client"
+      summary: "Logs out current logged in client session"
+      description: ""
+      operationId: "logoutClient"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+  
+  /client/{clientname}:
+  
+    get:
+      tags:
+      - "client"
+      summary: "Get client by client name"
+      description: ""
+      operationId: "getClientByName"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "clientname"
+        in: "path"
+        description: "The name that needs to be fetched. Use client1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Client"
+        400:
+          description: "Invalid clientname supplied"
+        404:
+          description: "Client not found"
+    put:
+      tags:
+      - "client"
+      summary: "Updated client"
+      description: "This can only be done by the logged in client."
+      operationId: "updateClient"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "clientname"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated client object"
+        required: true
+        schema:
+          $ref: "#/definitions/Client"
+      responses:
+        400:
+          description: "Invalid client supplied"
+        404:
+          description: "Client not found"
+    delete:
+      tags:
+      - "client"
+      summary: "Delete client"
+      description: "This can only be done by the logged in client."
+      operationId: "deleteClient"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "clientname"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid clientname supplied"
+        404:
+          description: "Client not found"
+
+securityDefinitions:
+  propostaperfil_auth:
+    type: "oauth2"
+    authorizationUrl: "http://propostaperfil.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:propostas: "modify propostas in your account"
+      read:propostas: "read your propostas"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+
+definitions:
+  
+  Perfil:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      codigo:
+        type: "integer"
+        format: "int64"
+      alcadaMinima:
+        type: "integer"
+        format: "int32"
+      alcadaMaxima:
+        type: "string"
+        format: "date-time"
+      risco:
+        type: "string"
+        enum:
+        - "baixoRisco"
+        - "md1"
+        - "md2"
+        - "md3"
+        - "altoRisco"
+    xml:
+      name: "Perfil"
+  
+  
+  Client:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      clientname:
+        type: "string"
+      cpf:
+        type: "integer"
+        format: "int64"
+      sexo:
+        type: "integer"
+      estadocivil:
+        type: "integer"
+      uf:
+        type: "string"
+      renda:
+        type: "number"
+        format: "int32"
+      perfil:
+        $ref: "#/definitions/Perfil"
+    xml:
+      name: "Client"
+  
+  
+  Proposta:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      client:
+        $ref: "#/definitions/Client"
+      situacao:
+        type: "string"
+        enum:
+        - "BaixaRenda"
+        - "NaoAprovado"
+        - "PoliticaCredito"
+        - "Aprovado"
+        - "Potencial"
+    xml:
+      name: "Proposta"
+        
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

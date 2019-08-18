@@ -1,6 +1,7 @@
 package com.zallpy.credit.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import com.zallpy.credit.model.Proposta;
 import com.zallpy.credit.service.PropostaService;
 
 @RestController
-@RequestMapping(value = "/propostas")
+@RequestMapping(value = "/proposta")
 public class PropostaResource {
 
 	/**
@@ -21,18 +22,23 @@ public class PropostaResource {
 	@Autowired
 	private PropostaService propostaService;
 	
-	//PUT
-		@RequestMapping(value = "/{cliente/{idCliente}", method = RequestMethod.PUT)
-		public ResponseEntity<?> defineRisco(@PathVariable Integer idCliente){
-			Proposta proposta = propostaService.avaliacaoRisco(idCliente);
-			return ResponseEntity.ok().body(proposta);
-		}
-	
-	//GET
+	//CONSULTA
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Proposta proposta = propostaService.buscar(id);
-		return ResponseEntity.ok().body(proposta);
+		if(proposta != null) {
+			return ResponseEntity.ok().body(proposta);
+		}
+		return new ResponseEntity<>(proposta, HttpStatus.NOT_FOUND);
 	}
 
+	//CONSULTA PROPOSTA POR CLIENTE
+	@RequestMapping(value = "/cliente/{idCliente}", method = RequestMethod.GET)
+	public ResponseEntity<?> buscaPropostaCliente(@PathVariable Integer idCliente){
+		Proposta proposta = propostaService.buscarPorCliente(idCliente);
+		if(proposta != null) {
+			return ResponseEntity.ok().body(proposta);
+		}
+		return new ResponseEntity<>(proposta, HttpStatus.NOT_FOUND);
+	}
 }
