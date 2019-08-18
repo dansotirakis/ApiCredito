@@ -8,6 +8,8 @@ import com.zallpy.credit.model.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
+	Object findByCpf(Long cpf);
+
 
 	/**
 	 * Author: Damianos Sotirakis 

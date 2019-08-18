@@ -1,0 +1,92 @@
+FUNCTION_BLOCK Aircon
+
+
+//Declara��es
+
+VAR_INPUT
+    cpf				: 	REAL;
+    idade			: 	REAL;  
+    estadocivil 	: 	REAL;
+    uf 				: 	REAL;
+    renda 			: 	REAL;
+    dependentes		: 	REAL;
+
+END_VAR
+
+VAR_OUTPUT
+    risco			: 	REAL;
+END_VAR
+
+//Variaveis de Entrada
+
+FUZZIFY cpf     
+    TERM limpo  	:= TRIAN 	0 0 8;
+    TERM sujo   	:= TRIAN 	2 10 10; 
+END_FUZZIFY
+
+FUZZIFY idade
+    TERM primeira   := TRIAN 	0 0 5;
+    TERM segunda    := TRIAN 	0 5 10;
+    TERM terceira   := TRIAN 	5 10 10;
+END_FUZZIFY
+
+FUZZIFY estadocivil    
+    TERM solteiro	:= TRIAN	0 0 3.5;
+    TERM casado		:= TRIAN	0 3.5 6.5;
+    TERM viuvo		:= TRIAN	3.5 6.5 10;
+    TERM divorciado	:= TRIAN	6.5 10 10;
+END_FUZZIFY
+
+FUZZIFY uf   
+    TERM norte		:= TRIAN	0 0 3.5;
+    TERM sul		:= TRIAN	0 3.5 6.5;
+    TERM leste		:= TRIAN	3.5 6.5 10;
+    TERM oeste		:= TRIAN	6.5 10 10;
+END_FUZZIFY
+
+FUZZIFY renda  
+    TERM baixa		:= TRIAN	0 0 3.5;
+    TERM md1		:= TRIAN	0 3.5 6.5;
+    TERM md2		:= TRIAN	3.5 6.5 10;
+    TERM alta		:= TRIAN	6.5 10 10;
+END_FUZZIFY
+
+FUZZIFY dependentes  
+    TERM poucos		:= TRIAN	0 0 3.5;
+    TERM md1		:= TRIAN	0 3.5 6.5;
+    TERM md2		:= TRIAN	3.5 6.5 10;
+    TERM muitos		:= TRIAN	6.5 10 10;
+END_FUZZIFY
+
+//Processo defuzifica��o
+
+DEFUZZIFY risco 
+    TERM baixo  	:= TRAPE	 0 0 1 2;
+    TERM md1   		:= TRAPE	 1 2 3 4;
+    TERM md2   		:= TRAPE	 3 4 5 6;
+    TERM md3   		:= TRAPE	 5 6 7 8;
+    TERM alto   	:= TRAPE	 7 8 10 10; 
+
+    METHOD : COG;
+END_DEFUZZIFY
+
+
+//MAMDANI RULES
+
+RULEBLOCK    kuralbloku
+   
+	RULE 1 : 	IF cpf IS sujo 	AND idade IS segunda 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS casado		AND dependentes IS poucos 	THEN risco IS md2;
+	RULE 2 : 	IF cpf IS limpo AND idade IS segunda 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS solteiro		AND dependentes IS poucos 	THEN risco IS md1;
+	RULE 3 : 	IF cpf IS limpo AND idade IS primeira 	AND uf IS sul 	AND renda IS baixa 	AND estadocivil IS viuvo		AND dependentes IS poucos 	THEN risco IS md3;
+	RULE 4 : 	IF cpf IS limpo AND idade IS terceira 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS divorciado	AND dependentes IS md2 		THEN risco IS md1;
+	RULE 5 : 	IF cpf IS limpo AND idade IS terceira 	AND uf IS sul 	AND renda IS md1 	AND estadocivil IS casado		AND dependentes IS md2 		THEN risco IS md2;
+	RULE 6 : 	IF cpf IS limpo AND idade IS terceira 	AND uf IS sul 	AND renda IS baixa 	AND estadocivil IS casado		AND dependentes IS md1 		THEN risco IS md3;
+	RULE 7 : 	IF cpf IS sujo 	AND idade IS segunda 	AND uf IS sul 	AND renda IS baixa 	AND estadocivil IS solteiro		AND dependentes IS poucos 	THEN risco IS md3;
+	RULE 8 : 	IF cpf IS limpo AND idade IS segunda 	AND uf IS norte AND renda IS md2 	AND estadocivil IS casado		AND dependentes IS poucos 	THEN risco IS md1;
+	RULE 9 : 	IF cpf IS limpo AND idade IS segunda 	AND uf IS sul 	AND renda IS baixa 	AND estadocivil IS divorciado	AND dependentes IS poucos 	THEN risco IS alto;
+	RULE 10 : 	IF cpf IS limpo AND idade IS segunda 	AND uf IS norte AND renda IS alta 	AND estadocivil IS divorciado	AND dependentes IS poucos 	THEN risco IS baixo;	
+	RULE 11 : 	IF cpf IS limpo AND idade IS terceira 	AND uf IS norte AND renda IS alta 	AND estadocivil IS viuvo		AND dependentes IS md2 		THEN risco IS alto;
+
+END_RULEBLOCK
+		
+END_FUNCTION_BLOCK

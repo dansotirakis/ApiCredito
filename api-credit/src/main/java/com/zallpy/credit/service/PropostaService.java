@@ -5,7 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zallpy.credit.model.Cliente;
 import com.zallpy.credit.model.Proposta;
+import com.zallpy.credit.model.enums.PropostaSituacao;
+import com.zallpy.credit.model.enums.SituacaoMotivo;
 import com.zallpy.credit.repository.PropostaRepository;
 import com.zallpy.credit.service.exceptions.ObjectNotFoundException;
 
@@ -18,6 +21,9 @@ public class PropostaService {
 
 	@Autowired
 	private PropostaRepository propostaRepository;
+	
+	@Autowired
+	private PerfilService perfilService;
 
 
 	public Proposta buscar(Integer id) {
@@ -27,13 +33,35 @@ public class PropostaService {
 	}
 
 
-	public Proposta avaliacaoRisco(Integer idCliente) {
-
-		/*
-		 * Criar aqui método para avaliar o risco a partir do cliente / perfil
-		 */
+	public void avaliacaoRisco(Cliente clienteComPerfil) {
+		Proposta proposta = new Proposta();
+		proposta.setCliente(clienteComPerfil);
 		
-		return null;
+		if(perfilService.getCpfSituacao() == 10) {
+			proposta.setSituacao(PropostaSituacao.RECUSADO);
+			proposta.setMotivo(SituacaoMotivo.RECUSADO3);
+		}else if(clienteComPerfil.getRenda() <= 800) {
+			proposta.setSituacao(PropostaSituacao.RECUSADO);
+			proposta.setMotivo(SituacaoMotivo.RECUSADO2);
+		}else if(clienteComPerfil.getPerfil().getRisco() <= 3.5) {
+			proposta.setSituacao(PropostaSituacao.APROVADO);
+			proposta.setMotivo(SituacaoMotivo.APROVADO2);
+		}else if(clienteComPerfil.getPerfil().getRisco() <= 3.5 && clienteComPerfil.getPerfil().getRisco() <= 5) {
+			proposta.setSituacao(PropostaSituacao.APROVADO);
+			proposta.setMotivo(SituacaoMotivo.APROVADO1);
+		}else if(clienteComPerfil.getPerfil().getRisco() > 5 && clienteComPerfil.getPerfil().getRisco() <= 6.5) {
+			proposta.setSituacao(PropostaSituacao.APROVADO);
+			proposta.setMotivo(SituacaoMotivo.APROVADO1);
+		}else if(clienteComPerfil.getPerfil().getRisco() > 6.5 && clienteComPerfil.getPerfil().getRisco() <= 10) {
+			proposta.setSituacao(PropostaSituacao.RECUSADO);
+			proposta.setMotivo(SituacaoMotivo.RECUSADO1);
+		}
+		propostaRepository.save(proposta);
+	}
+
+	public Proposta buscarPorCliente(Integer idCliente) {
+		Proposta proposta = propostaRepository.findPropostaByCliente(idCliente);		
+		return proposta;
 	}
 
 }
