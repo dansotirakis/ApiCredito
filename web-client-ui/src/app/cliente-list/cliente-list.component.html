@@ -1,0 +1,166 @@
+<!-- Editable table -->
+<div class="card clientes">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Lista Clientes</h3>
+    <div class="card-body clientes-container">
+        <div id="table" class="table-editable">
+            <nav class="my-4 flex-center">
+                <ul class="pagination pagination-circle pg-blue mb-0" *ngIf="pages">
+
+                    <!--First-->
+                    <li class="page-item">
+                        <a class="page-link" mdbWavesEffect (click)="onPageChanged(first_page[0])">Primeira página </a>
+                    </li>
+
+                    <!--Previous-->
+                    <li class="page-item">
+                        <a class="page-link" mdbWavesEffect aria-label="Previous" (click)="onPageChanged(previous_url)"
+                            [disabled]="!previous_url">
+                            <span aria-hidden="true">Página anterior</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+
+                    <!--Numbers-->
+                    <div *ngFor="let page of page_links ;let i = index,let last = last ">
+                        <li class="page-item" [ngClass]="{'active': page[2]}">
+                            <a class="page-link" mdbWavesEffect (click)="page"
+                                (click)="onPageChanged(page[0])">{{i+1}}</a>
+                        </li>
+                    </div>
+
+                    <!--next-->
+                    <li class="page-item">
+                        <a class="page-link" mdbWavesEffect aria-label="Next" (click)="onPageChanged(next_url)"
+                            [disabled]="!next_url">
+                            <span aria-hidden="true">Página seguinte </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+
+                    <!--LAST-->
+                    <li class="page-item">
+                        <a class="page-link" (click)="onPageChanged(last_page[0])">Ultima página</a>
+                    </li>
+
+                </ul>
+            </nav>
+            <span class="table-add float-right mb-3 mr-2">
+                <a class="nav-link text-success" routerLink="/cliente/create" routerLinkActive="active"
+                    title="Criar Cliente">
+
+                    <mdb-icon icon="plus" size="2x"></mdb-icon>
+                </a>
+            </span>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                    <th class="text-center">Nome </th>
+                    <th class="text-center">Morada</th>
+                    <th class="text-center">Codigo Postal</th>
+                    <th class="text-center">Localidade</th>
+                    <th class="text-center">Contacto</th>
+                    <th class="text-center">Data de conclusão</th>
+                    <th class="text-center">Acções</th>
+
+                </tr>
+                <tr *ngFor="let cliente of clientes;let i = index">
+                    <td class="vam">{{cliente.name}}</td>
+                    <td class="vam">{{cliente.address}}</td>
+                    <td class="vam">{{cliente.zip_code}}</td>
+                    <td class="vam">{{cliente.localidade}}</td>
+                    <td class="vam">{{cliente.tlf}}</td>
+                    <td class="vam">{{cliente.date_created}}</td>
+                    <td class="vam">
+                        <span class="table-remove">
+
+                            <button type="button nav-link" mdbBtn color="primary" class="my-0 btn-sm" rounde="true"
+                                (click)=get_detail(cliente.id) title="Consultar Cliente" mdbWavesEffect>
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+
+                            <button type="button nav-link" [routerLink]="['/cliente/update',cliente.id]"
+                                routerLinkActive="active" mdbBtn color="secondary" rounded="true" class="my-0 btn-sm"
+                                title="Editar Cliente">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button>
+
+                            <button type="button" mdbBtn color="danger" class="relative waves-light my-0 btn-sm"
+                                (click)="basicModal.show()" title="Remover Cliente" mdbWavesEffect>
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+
+                            <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+                                aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="basicModal.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title w-100" id="myModalLabel">Remover cliente</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Tem a certeza que pretende eliminar o cliente?
+                                            Caso elimine, não poderá voltar a consultar este cliente!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" mdbBtn color="secondary" class="waves-light"
+                                                aria-label="Close" (click)="basicModal.hide()"
+                                                mdbWavesEffect>Cancelar</button>
+                                            <button type="button" mdbBtn color="primary" class="relative waves-light"
+                                                (click)=[basicModal.hide(),remove(cliente.id,i)]
+                                                mdbWavesEffect>Eliminar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                    </td>
+                </tr>
+
+            </table>
+            <nav class="my-4 flex-center">
+                <ul class="pagination pagination-circle pg-blue mb-0" *ngIf="pages">
+
+                    <!--First-->
+                    <li class="page-item">
+                        <a class="page-link" mdbWavesEffect (click)="onPageChanged(first_page[0])">Primeira página </a>
+                    </li>
+
+                    <!--Previous-->
+                    <li class="page-item">
+                        <a class="page-link" mdbWavesEffect aria-label="Previous" (click)="onPageChanged(previous_url)"
+                            [disabled]="!previous_url">
+                            <span aria-hidden="true">Página anterior</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+
+                    <!--Numbers-->
+                    <div *ngFor="let page of page_links ;let i = index,let last = last ">
+                        <li class="page-item" [ngClass]="{'active': page[2]}">
+                            <a class="page-link" mdbWavesEffect (click)="page"
+                                (click)="onPageChanged(page[0])">{{i+1}}</a>
+                        </li>
+                    </div>
+
+                    <!--next-->
+                    <li class="page-item">
+                        <a class="page-link" mdbWavesEffect aria-label="Next" (click)="onPageChanged(next_url)"
+                            [disabled]="!next_url">
+                            <span aria-hidden="true">Página seguinte </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+
+                    <!--LAST-->
+                    <li class="page-item">
+                        <a class="page-link" (click)="onPageChanged(last_page[0])">Ultima página</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Editable table -->
