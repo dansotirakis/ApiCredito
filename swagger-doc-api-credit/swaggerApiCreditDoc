@@ -2,7 +2,7 @@ swagger: '2.0'
 
 info:
   description: "Sistema de avaliação de risco para conseção de crédito."
-  version: "1.0.0"
+  version: "1.0.1"
   title: "ApiCredit"
   termsOfService: "http://swagger.io/terms/"
   contact:
@@ -65,6 +65,22 @@ paths:
             description: "Invalid cliente supplied"
           500:
             description: "Cliente not found"
+  /cliente/list:
+    get:
+      tags:
+      - "cliente"
+      summary: "Consultar lista de clientes"
+      description: "Recurso para consulta lista de clientes"
+      operationId: "findAllclientes"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/cliente"
+        500:
+          description: "Erro entre em contato com administrador"
   /cliente/{id}:
     get:
       tags:
@@ -130,6 +146,22 @@ paths:
           description: "Invalid perfil supplied"
         500:
           description: "Perfil not found"
+  /perfil/list:
+    get:
+      tags:
+      - "perfil"
+      summary: "Consultar lista de perfils"
+      description: "Recurso para consulta lista de perfils"
+      operationId: "findAllperfil"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/perfil"
+        500:
+          description: "Erro entre em contato com administrador"
   /perfil/{id}:
     get:
       tags:
@@ -176,7 +208,22 @@ paths:
             $ref: "#/definitions/perfil"
         500:
           description: "Perfil not found"
-  
+  /proposta/list:
+    get:
+      tags:
+      - "proposta"
+      summary: "Consultar lista de perfils"
+      description: "Recurso para consulta lista de propostas"
+      operationId: "findAllpropostas"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/proposta"
+        500:
+          description: "Erro entre em contato com administrador"
   /proposta/{id}:
     get:
       tags:

@@ -797,6 +797,9 @@ margin-bottom: 20px;
                     <li data-group="Cliente" data-name="createCliente" class="">
                       <a href="#api-Cliente-createCliente">createCliente</a>
                     </li>
+                    <li data-group="Cliente" data-name="findAllclientes" class="">
+                      <a href="#api-Cliente-findAllclientes">findAllclientes</a>
+                    </li>
                     <li data-group="Cliente" data-name="getClienteById" class="">
                       <a href="#api-Cliente-getClienteById">getClienteById</a>
                     </li>
@@ -806,6 +809,9 @@ margin-bottom: 20px;
                   <li class="nav-header" data-group="Perfil"><a href="#api-Perfil">API Methods - Perfil</a></li>
                     <li data-group="Perfil" data-name="createPerfil" class="">
                       <a href="#api-Perfil-createPerfil">createPerfil</a>
+                    </li>
+                    <li data-group="Perfil" data-name="findAllperfil" class="">
+                      <a href="#api-Perfil-findAllperfil">findAllperfil</a>
                     </li>
                     <li data-group="Perfil" data-name="getPerfilById" class="">
                       <a href="#api-Perfil-getPerfilById">getPerfilById</a>
@@ -817,6 +823,9 @@ margin-bottom: 20px;
                       <a href="#api-Perfil-updatePerfil">updatePerfil</a>
                     </li>
                   <li class="nav-header" data-group="Proposta"><a href="#api-Proposta">API Methods - Proposta</a></li>
+                    <li data-group="Proposta" data-name="findAllpropostas" class="">
+                      <a href="#api-Proposta-findAllpropostas">findAllpropostas</a>
+                    </li>
                     <li data-group="Proposta" data-name="getPropostaById" class="">
                       <a href="#api-Proposta-getPropostaById">getPropostaById</a>
                     </li>
@@ -836,7 +845,7 @@ margin-bottom: 20px;
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 1.0.0</div>
+              <div class="app-desc">Version: 1.0.1</div>
             <hr>
             <div>Sistema de avaliação de risco para conseção de crédito.</div>
           </div>
@@ -1094,6 +1103,266 @@ $(document).ready(function() {
 
                           <h2>Responses</h2>
                             <h3> Status: default - successful operation </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Cliente-findAllclientes">
+                      <article id="api-Cliente-findAllclientes-0" data-group="User" data-name="findAllclientes" data-version="0">
+                        <div class="pull-left">
+                          <h1>findAllclientes</h1>
+                          <p>Consultar lista de clientes</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Recurso para consulta lista de clientes</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/cliente/list</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Cliente-findAllclientes-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Cliente-findAllclientes-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Cliente-findAllclientes-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Cliente-findAllclientes-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Cliente-findAllclientes-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost:8180/cliente/list"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Cliente-findAllclientes-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ClienteApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ClienteApiExample {
+
+    public static void main(String[] args) {
+        
+        ClienteApi apiInstance = new ClienteApi();
+        try {
+            cliente result = apiInstance.findAllclientes();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ClienteApi#findAllclientes");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Cliente-findAllclientes-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ClienteApi;
+
+public class ClienteApiExample {
+
+    public static void main(String[] args) {
+        ClienteApi apiInstance = new ClienteApi();
+        try {
+            cliente result = apiInstance.findAllclientes();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ClienteApi#findAllclientes");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Cliente-findAllclientes-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Cliente-findAllclientes-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+ClienteApi *apiInstance = [[ClienteApi alloc] init];
+
+// Consultar lista de clientes
+[apiInstance findAllclientesWithCompletionHandler: 
+              ^(cliente output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cliente-findAllclientes-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiCredit = require('api_credit');
+
+var api = new ApiCredit.ClienteApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.findAllclientes(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Cliente-findAllclientes-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Cliente-findAllclientes-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class findAllclientesExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new ClienteApi();
+
+            try
+            {
+                // Consultar lista de clientes
+                cliente result = apiInstance.findAllclientes();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ClienteApi.findAllclientes: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cliente-findAllclientes-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\ClienteApi();
+
+try {
+    $result = $api_instance->findAllclientes();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ClienteApi->findAllclientes: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cliente-findAllclientes-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ClienteApi;
+
+my $api_instance = WWW::SwaggerClient::ClienteApi->new();
+
+eval { 
+    my $result = $api_instance->findAllclientes();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ClienteApi->findAllclientes: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cliente-findAllclientes-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ClienteApi()
+
+try: 
+    # Consultar lista de clientes
+    api_response = api_instance.find_allclientes()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ClienteApi->findAllclientes: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - successful operation </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-findAllclientes-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-findAllclientes-200-schema">
+                                  <div id='responses-findAllclientes-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "successful operation",
+  "schema" : {
+    "$ref" : "#/definitions/cliente"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-findAllclientes-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-findAllclientes-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-findAllclientes-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Erro entre em contato com administrador </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -1928,6 +2197,266 @@ $(document).ready(function() {
 
                           <h2>Responses</h2>
                             <h3> Status: default - successful operation </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Perfil-findAllperfil">
+                      <article id="api-Perfil-findAllperfil-0" data-group="User" data-name="findAllperfil" data-version="0">
+                        <div class="pull-left">
+                          <h1>findAllperfil</h1>
+                          <p>Consultar lista de perfils</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Recurso para consulta lista de perfils</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/perfil/list</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Perfil-findAllperfil-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Perfil-findAllperfil-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Perfil-findAllperfil-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Perfil-findAllperfil-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Perfil-findAllperfil-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost:8180/perfil/list"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Perfil-findAllperfil-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.PerfilApi;
+
+import java.io.File;
+import java.util.*;
+
+public class PerfilApiExample {
+
+    public static void main(String[] args) {
+        
+        PerfilApi apiInstance = new PerfilApi();
+        try {
+            perfil result = apiInstance.findAllperfil();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PerfilApi#findAllperfil");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Perfil-findAllperfil-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.PerfilApi;
+
+public class PerfilApiExample {
+
+    public static void main(String[] args) {
+        PerfilApi apiInstance = new PerfilApi();
+        try {
+            perfil result = apiInstance.findAllperfil();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PerfilApi#findAllperfil");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Perfil-findAllperfil-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Perfil-findAllperfil-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+PerfilApi *apiInstance = [[PerfilApi alloc] init];
+
+// Consultar lista de perfils
+[apiInstance findAllperfilWithCompletionHandler: 
+              ^(perfil output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Perfil-findAllperfil-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiCredit = require('api_credit');
+
+var api = new ApiCredit.PerfilApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.findAllperfil(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Perfil-findAllperfil-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Perfil-findAllperfil-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class findAllperfilExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new PerfilApi();
+
+            try
+            {
+                // Consultar lista de perfils
+                perfil result = apiInstance.findAllperfil();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PerfilApi.findAllperfil: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Perfil-findAllperfil-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\PerfilApi();
+
+try {
+    $result = $api_instance->findAllperfil();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PerfilApi->findAllperfil: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Perfil-findAllperfil-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::PerfilApi;
+
+my $api_instance = WWW::SwaggerClient::PerfilApi->new();
+
+eval { 
+    my $result = $api_instance->findAllperfil();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling PerfilApi->findAllperfil: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Perfil-findAllperfil-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.PerfilApi()
+
+try: 
+    # Consultar lista de perfils
+    api_response = api_instance.find_allperfil()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PerfilApi->findAllperfil: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - successful operation </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-findAllperfil-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-findAllperfil-200-schema">
+                                  <div id='responses-findAllperfil-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "successful operation",
+  "schema" : {
+    "$ref" : "#/definitions/perfil"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-findAllperfil-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-findAllperfil-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-findAllperfil-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Erro entre em contato com administrador </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -2815,6 +3344,266 @@ $(document).ready(function() {
                   </section>
                 <section id="api-Proposta">
                   <h1>Proposta</h1>
+                    <div id="api-Proposta-findAllpropostas">
+                      <article id="api-Proposta-findAllpropostas-0" data-group="User" data-name="findAllpropostas" data-version="0">
+                        <div class="pull-left">
+                          <h1>findAllpropostas</h1>
+                          <p>Consultar lista de perfils</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Recurso para consulta lista de propostas</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/proposta/list</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Proposta-findAllpropostas-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Proposta-findAllpropostas-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Proposta-findAllpropostas-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Proposta-findAllpropostas-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Proposta-findAllpropostas-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost:8180/proposta/list"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.PropostaApi;
+
+import java.io.File;
+import java.util.*;
+
+public class PropostaApiExample {
+
+    public static void main(String[] args) {
+        
+        PropostaApi apiInstance = new PropostaApi();
+        try {
+            proposta result = apiInstance.findAllpropostas();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PropostaApi#findAllpropostas");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.PropostaApi;
+
+public class PropostaApiExample {
+
+    public static void main(String[] args) {
+        PropostaApi apiInstance = new PropostaApi();
+        try {
+            proposta result = apiInstance.findAllpropostas();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PropostaApi#findAllpropostas");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+PropostaApi *apiInstance = [[PropostaApi alloc] init];
+
+// Consultar lista de perfils
+[apiInstance findAllpropostasWithCompletionHandler: 
+              ^(proposta output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ApiCredit = require('api_credit');
+
+var api = new ApiCredit.PropostaApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.findAllpropostas(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Proposta-findAllpropostas-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class findAllpropostasExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new PropostaApi();
+
+            try
+            {
+                // Consultar lista de perfils
+                proposta result = apiInstance.findAllpropostas();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling PropostaApi.findAllpropostas: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\PropostaApi();
+
+try {
+    $result = $api_instance->findAllpropostas();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PropostaApi->findAllpropostas: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::PropostaApi;
+
+my $api_instance = WWW::SwaggerClient::PropostaApi->new();
+
+eval { 
+    my $result = $api_instance->findAllpropostas();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling PropostaApi->findAllpropostas: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Proposta-findAllpropostas-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.PropostaApi()
+
+try: 
+    # Consultar lista de perfils
+    api_response = api_instance.find_allpropostas()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PropostaApi->findAllpropostas: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - successful operation </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-findAllpropostas-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-findAllpropostas-200-schema">
+                                  <div id='responses-findAllpropostas-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "successful operation",
+  "schema" : {
+    "$ref" : "#/definitions/proposta"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-findAllpropostas-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-findAllpropostas-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-findAllpropostas-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Erro entre em contato com administrador </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Proposta-getPropostaById">
                       <article id="api-Proposta-getPropostaById-0" data-group="User" data-name="getPropostaById" data-version="0">
                         <div class="pull-left">
