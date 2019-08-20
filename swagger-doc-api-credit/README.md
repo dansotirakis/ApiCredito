@@ -7,4 +7,4 @@
 ## Swagger yaml:
 ##### swaggerApiCreditDoc.yaml
 ## Swagger hub :
-##### [SwaggerHub](https://app.swaggerhub.com/apis/dansotirakis7/Credit/1.0.0) Acesso SwaggerHub - Credit.
+##### [SwaggerHub](https://app.swaggerhub.com/apis/dansotirakis7/Credit/1.0.1) Acesso SwaggerHub - Credit.

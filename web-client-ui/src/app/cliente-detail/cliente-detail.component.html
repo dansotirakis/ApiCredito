@@ -1,0 +1,33 @@
+<h2>Cliente Detalhes</h2> 
+
+<hr/>
+<div *ngIf="cliente">
+  <div>
+    <label><b>NOME: </b></label> {{cliente.firstName}}
+  </div>
+  <div>
+    <label><b>DEPENDENTES: </b></label> {{cliente.lastName}}
+  </div>
+  <div>
+    <label><b>CPF: </b></label> {{cliente.emailId}}
+  </div>  
+  <div>
+    <label><b>SEXO: </b></label> {{cliente.emailId}}
+  </div>  
+  <div>
+    <label><b>ESTADOCIVIL: </b></label> {{cliente.emailId}}
+  </div>  
+  <div>
+    <label><b>IDADE: </b></label> {{cliente.emailId}}
+  </div>  
+  <div>
+    <label><b>UF: </b></label> {{cliente.emailId}}
+  </div>  
+  <div>
+    <label><b>RENDA: </b></label> {{cliente.emailId}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
