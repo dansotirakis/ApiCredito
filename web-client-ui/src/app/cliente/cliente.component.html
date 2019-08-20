@@ -1,0 +1,70 @@
+<h3>Cliente</h3>
+
+<p>
+    <a routerLink="/cliente">Novo cliente</a>
+</p>
+
+<div class="cliente-item" *ngFor="let item of items">
+    <span>{{ item.nome }} </span>
+    <span>{{ item.idade }} </span>
+    <span>{{ item.sexo }} </span>
+    <span>{{ item.estadocivil }} </span>
+    <span>{{ item.estado }} </span>
+    <span>{{ item.dependentes }} </span>
+    <span>{{ item.renda }} </span>
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+    <div>
+        <label for="nome">
+            Nome
+        </label>
+        <input id="nome" type="text" formControlName="nome">
+    </div>
+
+    <div>
+        <label for="idade">
+            Idade
+        </label>
+        <input id="idade" type="number" formControlName="idade">
+    </div>
+
+    <div>
+        <label for="sexo">
+            Sexo
+        </label>
+        <input id="sexo" type="text" formControlName="sexo">
+    </div>
+
+    <div>
+        <label for="estadocivil">
+            Estado civil
+        </label>
+        <input id="estadocivil" type="number" formControlName="estadocivil">
+    </div>
+
+    <div>
+        <label for="estado">
+            Estado
+        </label>
+        <input id="estado" type="text" formControlName="estado">
+    </div>
+
+    <div>
+        <label for="dependentes">
+            Dependentes
+        </label>
+        <input id="dependentes" type="text" formControlName="dependentes">
+    </div>
+
+    <div>
+        <label for="renda">
+            Renda
+        </label>
+        <input id="renda" type="number" formControlName="number">
+    </div>
+
+    <button class="button" type="submit">Purchase</button>
+
+</form>

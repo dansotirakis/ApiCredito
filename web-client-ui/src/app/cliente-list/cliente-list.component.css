@@ -1,0 +1,17 @@
+.clientes{
+    margin-top: 170px;
+}
+
+.clientes-container{
+    margin-top:60px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.vam{
+    vertical-align: middle;
+}
+
+.btn.btn-sm{
+    padding: 1rem 1rem !important;
+}
