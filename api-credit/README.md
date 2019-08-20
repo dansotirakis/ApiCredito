@@ -51,3 +51,9 @@ localhost:8180/cliente/add
 #### ER
 
 ![ER-API-CREDIT](ER-API-CREDIT.PNG)
+
+#### Construindo projeto com container docker
+
+```
+docker build -t rogeriofonseca/tomcat-server:1.0 . && docker run -p 8383:8080 — rm -it rogeriofonseca/tomcat-server:1.0
+```

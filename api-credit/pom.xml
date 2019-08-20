@@ -14,7 +14,7 @@
 	<version>1.0.0-RELEASE</version>
 	<name>credit</name>
 	<description>Api análise de crédito zallpy</description>
-
+	<packaging>war</packaging>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -46,9 +46,11 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.jFuzzyLogic/jFuzzyLogic -->
 		<dependency>
-		    <groupId>net.sourceforge.jFuzzyLogic</groupId>
-		    <artifactId>jFuzzyLogic</artifactId>
-		    <version>1.2.1</version>
+		  <groupId>net.sourceforge.jFuzzyLogic</groupId>
+		  <artifactId>jFuzzyLogic</artifactId>
+		  <version>1.0.0</version>
+		  <scope>system</scope>
+		  <systemPath>${project.basedir}\src\main\java\com\zallpy\credit\fuzzy\jFuzzyLogic.jar</systemPath>
 		</dependency>
 
 	</dependencies>
@@ -61,5 +63,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
