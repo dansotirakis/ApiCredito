@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-cliente',
-  templateUrl: './create-cliente.component.html',
-  styleUrls: ['./create-cliente.component.css']
+  selector: 'app-cliente-add',
+  templateUrl: './cliente-add.component.html',
+  styleUrls: ['./cliente-add.component.css']
 })
 export class CreateClienteComponent implements OnInit {
 
