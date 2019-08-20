@@ -1,6 +1,7 @@
 package com.zallpy.credit.resources;
 
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zallpy.credit.model.Cliente;
 import com.zallpy.credit.model.Perfil;
 import com.zallpy.credit.repository.PerfilRepository;
 import com.zallpy.credit.service.PerfilService;
@@ -40,6 +42,16 @@ public class PerfilResource {
 		}
 		perfilRepository.save(perfil.get());
 		return ResponseEntity.ok().body(perfil);
+	}
+	
+	//CONSULTA LISTA DE PERFILS
+	@CrossOrigin(origins="http://localhost:4200")
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ResponseEntity<?> findAll() {
+		List<Perfil> perfilList = perfilRepository.findAll();
+		
+		return ResponseEntity.ok().body(perfilList);
+		
 	}
 	
 	// CONSULTA
