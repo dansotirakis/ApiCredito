@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class PerfilResource {
 	private PerfilRepository perfilRepository;
 
 	// CADASTRO
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<?> add(@RequestBody Optional<Perfil> perfil) throws URISyntaxException {
 		if (perfilService.existe(perfil.get())) {
@@ -41,6 +43,7 @@ public class PerfilResource {
 	}
 	
 	// CONSULTA
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> buscar(@PathVariable Integer id) {
 		Perfil perfil = perfilService.buscar(id);
@@ -51,6 +54,7 @@ public class PerfilResource {
 	}
 	
 	//EDIÇÃO
+	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
 	public ResponseEntity<?> edit(@RequestBody Perfil perfil) {
 		if (perfilService.buscar(perfil.getId()) != null) {
@@ -62,12 +66,13 @@ public class PerfilResource {
 	}
 	
 	// COLSULTA POR CLIENTE
-		@RequestMapping(value = "/cliente/{idCliente}", method = RequestMethod.GET)
-		public ResponseEntity<?> consultarPerfilCliente(@PathVariable Integer idCliente) {
-			Perfil perfil = perfilService.buscarPorCliente(idCliente);
-			if (perfil != null) {
-				return ResponseEntity.ok().body(perfil);
-			}
-			return new ResponseEntity<>(perfil, HttpStatus.NOT_FOUND);
+	@CrossOrigin(origins="http://localhost:4200")
+	@RequestMapping(value = "/cliente/{idCliente}", method = RequestMethod.GET)
+	public ResponseEntity<?> consultarPerfilCliente(@PathVariable Integer idCliente) {
+		Perfil perfil = perfilService.buscarPorCliente(idCliente);
+		if (perfil != null) {
+			return ResponseEntity.ok().body(perfil);
 		}
+		return new ResponseEntity<>(perfil, HttpStatus.NOT_FOUND);
+	}
 }
