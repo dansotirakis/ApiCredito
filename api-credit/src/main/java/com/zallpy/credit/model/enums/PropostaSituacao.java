@@ -17,7 +17,9 @@ public enum PropostaSituacao {
 	private PropostaSituacao(String value) {
 			this.value = value;
 		}
-
+	public String getValue() {
+		return this.value;
+	}
 	public static PropostaSituacao fromValue(String value) {
 		for (PropostaSituacao situacao : values()) {
 			if (situacao.value.equalsIgnoreCase(value)) {

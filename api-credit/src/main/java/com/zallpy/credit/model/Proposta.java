@@ -23,10 +23,8 @@ public class Proposta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Enumerated(EnumType.STRING)
-	private PropostaSituacao situacao;
-	@Enumerated(EnumType.STRING)
-	private SituacaoMotivo motivo;
+	private String situacao;
+	private String motivo;
 	
 	// Relacionamento cliente - proposta
 	@ManyToOne
@@ -49,18 +47,18 @@ public class Proposta {
 		this.cliente = cliente;
 	}
 
-	public SituacaoMotivo getMotivo() {
+	public String getMotivo() {
 		return motivo;
 	}
 
-	public void setMotivo(SituacaoMotivo motivo) {
+	public void setMotivo(String motivo) {
 		this.motivo = motivo;
 	}
-	public PropostaSituacao getSituacao() {
+	public String getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(PropostaSituacao situacao) {
+	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
 
