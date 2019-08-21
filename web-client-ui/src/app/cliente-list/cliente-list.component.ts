@@ -1,6 +1,8 @@
 import { ClienteDetailsComponent } from '../cliente-detail/cliente-detail.component';
 import { Observable } from "rxjs";
 import { ClienteService } from '../services/cliente/cliente.service';
+import { PropostaService } from '../services/proposta/proposta.service';
+import { proposta } from "../proposta";
 import { cliente } from "../cliente";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
@@ -11,27 +13,29 @@ import { Router } from '@angular/router';
   styleUrls: ["./cliente-list.component.css"]
 })
 export class ClienteListComponent implements OnInit {
-  clientes: Observable<cliente[]>;
+  //clientes: Observable<cliente[]>;
+  propostas: Observable<proposta[]>;
 
   constructor(private clienteService: ClienteService,
-    private router: Router) {}
+    private router: Router, private propostaService: PropostaService) {}
 
   ngOnInit() {
     this.reloadData();
   }
 
   reloadData() {
-    this.clientes = this.clienteService.getClientesList();
+    //this.clientes = this.clienteService.getClientesList();
+    this.propostas = this.propostaService.getPropostasList();
   }
 
   deleteCliente(id: number) {
-    this.clienteService.deleteCliente(id)
-      .subscribe(
-        data => {
-          console.log(data);
+    //this.clienteService.deleteCliente(id)
+      //.subscribe(
+       // data => {
+          console.log(id);
           this.reloadData();
-        },
-        error => console.log(error));
+      // },
+      //  error => console.log(error));
   }
 
   clienteDetails(id: number){

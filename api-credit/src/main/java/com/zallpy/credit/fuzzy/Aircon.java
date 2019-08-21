@@ -22,7 +22,6 @@ public class Aircon {
         renda=t;
         dependentes=s;
         
-        FIS fis = FIS.load("Aircon.fcl", true);
         File dosya=new File(getClass().getResource("Aircon.fcl").toURI());
         fis=FIS.load(dosya.getPath(),true);
         fis.setVariable("cpf", cpf);

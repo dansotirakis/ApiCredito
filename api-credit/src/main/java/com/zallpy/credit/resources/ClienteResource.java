@@ -36,9 +36,6 @@ public class ClienteResource {
 	@CrossOrigin(origins="http://localhost:4200")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<?> add(@RequestBody Optional<Cliente> cliente) throws URISyntaxException {
-		if (!clienteService.existe(cliente.get())) {
-			return new ResponseEntity<>(cliente,HttpStatus.ALREADY_REPORTED);
-		}
 		Cliente clienteComPerfil = clienteService.buscarPerfilDeRisco(cliente.get());
 		clienteRepository.save(clienteComPerfil);
 		clienteService.gerarProposta(clienteComPerfil);

@@ -1,8 +1,6 @@
 FUNCTION_BLOCK Aircon
 
 
-//Declara��es
-
 VAR_INPUT
     cpf				: 	REAL;
     idade			: 	REAL;  
@@ -76,7 +74,7 @@ END_DEFUZZIFY
 RULEBLOCK    kuralbloku
    
 	RULE 1 : 	IF cpf IS sujo 	AND idade IS segunda 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS casado		AND dependentes IS poucos 	THEN risco IS md2;
-	RULE 2 : 	IF cpf IS limpo AND idade IS segunda 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS solteiro		AND dependentes IS poucos 	THEN risco IS md1;
+	RULE 2 : 	IF cpf IS limpo AND idade IS segunda 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS solteiro		AND dependentes IS muitos 	THEN risco IS md1;
 	RULE 3 : 	IF cpf IS limpo AND idade IS primeira 	AND uf IS sul 	AND renda IS baixa 	AND estadocivil IS viuvo		AND dependentes IS poucos 	THEN risco IS md3;
 	RULE 4 : 	IF cpf IS limpo AND idade IS terceira 	AND uf IS sul 	AND renda IS md2 	AND estadocivil IS divorciado	AND dependentes IS md2 		THEN risco IS md1;
 	RULE 5 : 	IF cpf IS limpo AND idade IS terceira 	AND uf IS sul 	AND renda IS md1 	AND estadocivil IS casado		AND dependentes IS md2 		THEN risco IS md2;
