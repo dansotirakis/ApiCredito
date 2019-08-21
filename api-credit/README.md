@@ -29,27 +29,27 @@ java -jar jFuzzyLogic.jar Aircon.fcl
 ```
 E o resultado deve se parecer com:
 ![FuzzyCredit](FuzzyCredit.PNG)
-```
+
 #### Os End-Points da api são 
 
 ##### GET
-```
+
 localhost:8180/cliente/{ID}
 localhost:8180/perfil/cliente/{ID}
 localhost:8180/perfil/{ID}
 localhost:8180/proposta/{ID}
 localhost:8180/proposta/cliente/{ID}
-```
+
 ##### PUT
-```
+
 localhost:8180/perfil/edit
 localhost:8180/cliente/edit
-```
+
 ##### POST
-```
+
 localhost:8180/perfil/add
 localhost:8180/cliente/add
-```
+
 
 #### ER
 
@@ -57,6 +57,6 @@ localhost:8180/cliente/add
 
 #### Construindo projeto com container docker
 
-```
+
 docker build -t rogeriofonseca/tomcat-server:1.0 . && docker run -p 8383:8080 — rm -it rogeriofonseca/tomcat-server:1.0
-```
+
