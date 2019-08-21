@@ -23,7 +23,10 @@ um nível de certeza seria necessária utilização de no minimo 370 regras dist
 OBS: toda lógica envolvida na avaliação está disponível no pacote com.zallpy.credit.fuzzy e o arquivo fis contem as regras desenvolvidas no MATLAB.
 
 Para visualizar os gráficos das regras envolvidas no processo basta executar:
-> java | -jar jFuzzyLogic.jar Aircon.fcl | (sem pipes) no diretório "com.zallpy.credit.fuzzy" e o resultado deve se parecer com:
+```
+ java -jar jFuzzyLogic.jar Aircon.fcl 
+```
+No diretório "com.zallpy.credit.fuzzy" e o resultado deve se parecer com:
 ```
 ![FuzzyCredit](FuzzyCredit.PNG)
 
