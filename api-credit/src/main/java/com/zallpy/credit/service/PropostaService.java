@@ -38,23 +38,23 @@ public class PropostaService {
 		proposta.setCliente(clienteComPerfil);
 		
 		if(perfilService.getCpfSituacao() == 10) {
-			proposta.setSituacao(PropostaSituacao.RECUSADO);
-			proposta.setMotivo(SituacaoMotivo.RECUSADO3);
+			proposta.setSituacao(PropostaSituacao.RECUSADO.getValue());
+			proposta.setMotivo(SituacaoMotivo.RECUSADO3.getValue());
 		}else if(clienteComPerfil.getRenda() <= 800) {
-			proposta.setSituacao(PropostaSituacao.RECUSADO);
-			proposta.setMotivo(SituacaoMotivo.RECUSADO2);
+			proposta.setSituacao(PropostaSituacao.RECUSADO.getValue());
+			proposta.setMotivo(SituacaoMotivo.RECUSADO2.getValue());
 		}else if(clienteComPerfil.getPerfil().getRisco() <= 3.5) {
-			proposta.setSituacao(PropostaSituacao.APROVADO);
-			proposta.setMotivo(SituacaoMotivo.APROVADO2);
+			proposta.setSituacao(PropostaSituacao.APROVADO.getValue());
+			proposta.setMotivo(SituacaoMotivo.APROVADO2.getValue());
 		}else if(clienteComPerfil.getPerfil().getRisco() <= 3.5 && clienteComPerfil.getPerfil().getRisco() <= 5) {
-			proposta.setSituacao(PropostaSituacao.APROVADO);
-			proposta.setMotivo(SituacaoMotivo.APROVADO1);
+			proposta.setSituacao(PropostaSituacao.APROVADO.getValue());
+			proposta.setMotivo(SituacaoMotivo.APROVADO1.getValue());
 		}else if(clienteComPerfil.getPerfil().getRisco() > 5 && clienteComPerfil.getPerfil().getRisco() <= 6.5) {
-			proposta.setSituacao(PropostaSituacao.APROVADO);
-			proposta.setMotivo(SituacaoMotivo.APROVADO1);
+			proposta.setSituacao(PropostaSituacao.APROVADO.getValue());
+			proposta.setMotivo(SituacaoMotivo.APROVADO1.getValue());
 		}else if(clienteComPerfil.getPerfil().getRisco() > 6.5 && clienteComPerfil.getPerfil().getRisco() <= 10) {
-			proposta.setSituacao(PropostaSituacao.RECUSADO);
-			proposta.setMotivo(SituacaoMotivo.RECUSADO1);
+			proposta.setSituacao(PropostaSituacao.RECUSADO.getValue());
+			proposta.setMotivo(SituacaoMotivo.RECUSADO1.getValue());
 		}
 		propostaRepository.save(proposta);
 	}

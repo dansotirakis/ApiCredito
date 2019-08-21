@@ -23,6 +23,9 @@ public enum SituacaoMotivo {
 	private SituacaoMotivo(String value) {
 			this.value = value;
 		}
+	public String getValue() {
+		return this.value;
+	}
 
 	public static SituacaoMotivo fromValue(String value) {
 		for (SituacaoMotivo motivo : values()) {

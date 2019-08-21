@@ -6,40 +6,94 @@
       <label for="name">NOME :</label>
       <input type="text" class="form-control" id="nome" required [(ngModel)]="cliente.nome" name="nome">
     </div>
+    
     <div class="form-group">
-      <label for="dependerntes">DEPENDENTES :</label>
-      <input type="number" class="form-control" id="dependerntes" required [(ngModel)]="cliente.dependerntes" name="dependerntes">
+      <label for="sexo">SEXO :</label>
+      <select class="custom-select" id="sexo" required [(ngModel)]="cliente.sexo" name="sexo">
+        <option selected>Selecione...</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
     </div>
+
+    <div class="form-group">
+      <label for="dependentes">DEPENDENTES :</label>
+      <select class="custom-select" id="dependerntes" required [(ngModel)]="cliente.dependerntes" name="dependerntes">
+        <option selected>Selecione...</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 ou mais</option>
+      </select>
+    </div>
+    
     <div class="form-group">
       <label for="cpf">CPF :</label>
       <input type="number" class="form-control" id="cpf" required [(ngModel)]="cliente.cpf" name="cpf">
     </div>
+  
     <div class="form-group">
-        <label for="sexo">SEXO :</label>
-        <input type="text" class="form-control" id="sexo" required [(ngModel)]="cliente.sexo" name="sexo">
+      <label for="sexo">ESTADO CIVIL :</label>
+      <select class="custom-select" id="estadocivil" required [(ngModel)]="cliente.estadocivil" name="estadocivil">
+        <option selected>Selecione...</option>
+        <option value="1">Solteiro (a)</option>
+        <option value="2">Casado (a)</option>
+        <option value="2">Viuvo (a)</option>
+        <option value="2">Divorciado (a)</option>
+      </select>
     </div>
-    <div class="form-group">
-        <label for="estadocivil">ESTADO CIVIL :</label>
-        <input type="number" class="form-control" id="estadocivil" required [(ngModel)]="cliente.estadocivil" name="estadocivil">
-    </div>
+    
     <div class="form-group">
         <label for="idade">IDADE :</label>
         <input type="number" class="form-control" id="idade" required [(ngModel)]="cliente.idade" name="idade">
     </div>
+    
     <div class="form-group">
-        <label for="uf">UF :</label>
-        <input type="text" class="form-control" id="uf" required [(ngModel)]="cliente.uf" name="uf">
+      <label for="sexo">UF :</label>
+      <select class="custom-select" id="uf" required [(ngModel)]="cliente.uf" name="uf">
+        <option selected>Selecione...</option>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito federal</option>
+        <option value="ES">Espirito santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraiba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernanbuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+      </select>
     </div>
+    
     <div class="form-group">
         <label for="renda">RENDA :</label>
         <input type="number" class="form-control" id="renda" required [(ngModel)]="cliente.renda" name="renda">
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Enviar para análise</button>
   </form>
 </div>
 
 <div [hidden]="!submitted">
   <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  <!-- <button class="btn btn-success" (click)="newCliente()">Add</button> -->
 </div>

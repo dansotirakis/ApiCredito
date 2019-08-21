@@ -31,11 +31,15 @@ export class CreateClienteComponent implements OnInit {
     this.gotoList();
   }
 
+  
+
   onSubmit() {
     this.submitted = true;
     this.save();    
   }
 
+
+  
   gotoList() {
     this.router.navigate(['/clientes']);
   }
