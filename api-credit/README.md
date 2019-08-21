@@ -28,9 +28,8 @@ java -jar jFuzzyLogic.jar Aircon.fcl
 
 ```
 E o resultado deve se parecer com:
-```
 ![FuzzyCredit](FuzzyCredit.PNG)
-
+```
 #### Os End-Points da api são 
 
 ##### GET
