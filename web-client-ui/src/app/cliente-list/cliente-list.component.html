@@ -14,20 +14,24 @@
             <th>IDADE</th>
             <th>UF</th>
             <th>RENDA</th>
+            <th>SITUACAO</th>
+            <th>MOTIVO</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cliente of clientes | async">
-            <td>{{cliente.nome}}</td>
-            <td>{{cliente.dependerntes}}</td>
-            <td>{{cliente.cpf}}</td>
-            <td>{{cliente.sexo}}</td>
-            <td>{{cliente.estadocivil}}</td>
-            <td>{{cliente.idade}}</td>
-            <td>{{cliente.uf}}</td>
-            <td>{{cliente.renda}}</td>
+          <tr *ngFor="let proposta of propostas | async">
+            <td>{{proposta.cliente.nome}}</td>
+            <td>{{proposta.cliente.dependerntes}}</td>
+            <td>{{proposta.cliente.cpf}}</td>
+            <td>{{proposta.cliente.sexo}}</td>
+            <td>{{proposta.cliente.estadocivil}}</td>
+            <td>{{proposta.cliente.idade}}</td>
+            <td>{{proposta.cliente.uf}}</td>
+            <td>{{proposta.cliente.renda}}</td>
+            <td>{{proposta.situacao}}</td>
+            <td>{{proposta.motivo}}</td>
             <td>
-              <!--<button (click)="deleteCliente(cliente.id)" class="btn btn-danger">Delete</button>-->
+              <button (click)="deleteCliente(cliente.id)" class="btn btn-danger">Delete</button>
               <button (click)="clienteDetails(cliente.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
             </td>
           </tr>

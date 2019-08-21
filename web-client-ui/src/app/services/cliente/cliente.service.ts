@@ -28,7 +28,7 @@ export class ClienteService {
   }
 
   createCliente(Cliente: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, cliente);
+    return this.http.post(`${this.baseUrl}/add`, Cliente);
   }
 
   getCliente(id: number): Observable<any> {
