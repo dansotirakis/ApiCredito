@@ -11,6 +11,7 @@ import { PropostaService } from './services/proposta/proposta.service';
 import { ClienteListComponent } from './cliente-list/cliente-list.component';
 import { ClienteDetailsComponent } from './cliente-detail/cliente-detail.component';
 import { CreateClienteComponent } from './cliente-add/cliente-add.component';
+import { CpfdiretiveDirective } from './cpfdiretive.directive';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CreateClienteComponent } from './cliente-add/cliente-add.component';
     ClienteListComponent,
     CreateClienteComponent,
     ClienteDetailsComponent,
+    CpfdiretiveDirective,
 
   ],
   imports: [
