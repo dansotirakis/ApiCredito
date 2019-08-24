@@ -1,17 +1,11 @@
 package com.zallpy.credit.model;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.zallpy.credit.model.Cliente;
-import com.zallpy.credit.model.enums.PropostaSituacao;
-import com.zallpy.credit.model.enums.SituacaoMotivo;
 
 @Entity
 public class Proposta {
