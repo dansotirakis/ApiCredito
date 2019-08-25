@@ -27,15 +27,19 @@ um nível de certeza seria necessária utilização de no minimo 370 regras dist
 
 OBS: toda lógica envolvida na avaliação está disponível no pacote com.zallpy.credit.fuzzy e o arquivo fis contem as regras desenvolvidas no MATLAB.
 
-Para visualizar os gráficos das regras envolvidas no processo basta executar:
-> java | -jar jFuzzyLogic.jar Aircon.fcl | (sem pipes) no diretório "com.zallpy.credit.fuzzy" e o resultado deve se parecer com:
+Para visualizar os gráficos das regras envolvidas no processo basta executar no diretório "com.zallpy.credit.fuzzy":
+
+java -jar jFuzzyLogic.jar Aircon.fcl 
+
 ```
+E o resultado deve se parecer com:
 
 ![FuzzyCredit](FuzzyCredit.PNG)
 
 #### Os End-Points da api são 
 
 ##### GET
+
 
 ```
 localhost:8180/cliente/{ID}
@@ -54,10 +58,10 @@ localhost:8180/cliente/edit
 
 ##### POST
 
-```
+``
 localhost:8180/perfil/add
 localhost:8180/cliente/add
-```
+``
 
 #### ER
 
@@ -65,6 +69,6 @@ localhost:8180/cliente/add
 
 #### Construindo projeto com container docker
 
-```
+
 docker build -t rogeriofonseca/tomcat-server:1.0 . && docker run -p 8383:8080 — rm -it rogeriofonseca/tomcat-server:1.0
-```
+
