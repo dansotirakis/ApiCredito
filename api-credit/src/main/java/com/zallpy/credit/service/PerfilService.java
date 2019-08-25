@@ -28,6 +28,10 @@ public class PerfilService {
 	@Autowired
 	private ClienteRepository clienteRepository;
 
+	/**
+	 * Implementar consulta situação cadastral cpf.. (Paga!)
+	 */
+	
 	String situacao = "r";
 	Integer cadSituacao = 10;
 	

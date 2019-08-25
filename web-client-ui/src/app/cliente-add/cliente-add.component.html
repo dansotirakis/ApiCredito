@@ -1,5 +1,4 @@
-<h3>Cadastrar cliente</h3>
-<div [hidden]="submitted" style="width: auto;">
+<div [hidden]="submitted" class="container">
   <form (ngSubmit)="onSubmit()">
     
     <div class="form-group">
@@ -40,14 +39,14 @@
         <option selected>Selecione...</option>
         <option value="1">Solteiro (a)</option>
         <option value="2">Casado (a)</option>
-        <option value="2">Viuvo (a)</option>
-        <option value="2">Divorciado (a)</option>
+        <option value="3">Viuvo (a)</option>
+        <option value="4">Divorciado (a)</option>
       </select>
     </div>
     
     <div class="form-group">
         <label for="idade">IDADE :</label>
-        <input type="number" class="form-control" id="idade" required [(ngModel)]="cliente.idade" name="idade">
+        <input type="text" appCpfdiretive="99" class="form-control" id="idade" required [(ngModel)]="cliente.idade" name="idade">
     </div>
     
     <div class="form-group">
@@ -86,7 +85,7 @@
     
     <div class="form-group">
         <label for="renda">RENDA :</label>
-        <input type="number" class="form-control" id="renda" required [(ngModel)]="cliente.renda" name="renda">
+        <input type="text" value="{{valorUnitario | currency}}" class="form-control" id="renda" required [(ngModel)]="cliente.renda" name="renda">
     </div>
 
     <button type="submit" class="btn btn-success">Enviar para análise</button>
@@ -95,5 +94,5 @@
 
 <div [hidden]="!submitted">
   <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newCliente()">Add</button> -->
+  <button class="btn btn-success" (click)="newCliente()">Add</button>
 </div>

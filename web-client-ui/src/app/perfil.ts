@@ -1,7 +1,7 @@
 export class perfil {
     id: number;
     risco: number;
-    alcadaMainima: number;
+    alcadaMinima: number;
     alcadaMaxima: number;
     
 

@@ -7,7 +7,8 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.7.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath /> 
+		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zallpy</groupId>
 	<artifactId>credit</artifactId>
@@ -50,7 +51,7 @@
 		  <artifactId>jFuzzyLogic</artifactId>
 		  <version>1.0.0</version>
 		  <scope>system</scope>
-		  <systemPath>${project.basedir}\src\main\java\com\zallpy\credit\fuzzy\jFuzzyLogic.jar</systemPath>
+		  <systemPath>${project.basedir}/src/main/java/com/zallpy/credit/fuzzy/jFuzzyLogic.jar</systemPath>
 		</dependency>
 
 	</dependencies>

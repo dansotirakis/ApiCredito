@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
-import { cliente } from 'src/app/cliente';
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +12,6 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-   
   updateCliente(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }

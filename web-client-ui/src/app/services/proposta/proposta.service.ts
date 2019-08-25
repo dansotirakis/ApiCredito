@@ -6,7 +6,9 @@ import 'rxjs/add/operator/toPromise';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PropostaService {
+
   private baseUrl = 'http://localhost:8180/proposta';
   
   constructor(private http: HttpClient) { }   

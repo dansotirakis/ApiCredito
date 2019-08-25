@@ -15,3 +15,16 @@
 .btn.btn-sm{
     padding: 1rem 1rem !important;
 }
+th {
+    white-space: nowrap;
+    text-align: center;
+}
+td {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.margens{
+    margin-left: 30px;
+    margin-right: 30px;
+}
