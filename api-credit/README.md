@@ -69,6 +69,5 @@ localhost:8180/cliente/add
 
 #### Construindo projeto com container docker
 
-
-docker build -t rogeriofonseca/tomcat-server:1.0 . && docker run -p 8383:8080 — rm -it rogeriofonseca/tomcat-server:1.0
+` docker build -t zallpy/tomcat-server:1.0 . && docker run -d --network host -p 8383:8080 — rm -it zallpy/tomcat-server:1.0 `
 
